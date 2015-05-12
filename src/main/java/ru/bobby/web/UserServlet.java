@@ -21,10 +21,10 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.sendRedirect("userList.jsp");
 
-        LOG.trace("Hello World!");
-        LOG.debug("How are you today?");
-        LOG.info("I am fine.");
-        LOG.warn("I love programming.");
-        LOG.error("I am programming.");
+        LOG.trace("trace redirect");
+        LOG.debug("debug redirect");
+        LOG.info("info redirect");
+        LOG.warn("warn redirect");
+        LOG.error("error redirect");
     }
 }
