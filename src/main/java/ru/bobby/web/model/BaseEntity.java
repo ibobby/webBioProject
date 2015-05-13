@@ -7,6 +7,10 @@ public class BaseEntity {
 
     protected Integer id;
 
+    protected BaseEntity(Integer id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
