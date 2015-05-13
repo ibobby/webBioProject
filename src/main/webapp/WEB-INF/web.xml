@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>userServlet</servlet-name>
-        <servlet-class>ru.bobby.web.UserServlet</servlet-class>
+        <servlet-class>ru.bobby.web.web.UserServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
 

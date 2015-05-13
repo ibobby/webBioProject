@@ -1,4 +1,4 @@
-package ru.bobby.web;
+package ru.bobby.web.web;
 
 
 import org.slf4j.Logger;
