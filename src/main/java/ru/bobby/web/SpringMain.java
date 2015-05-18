@@ -2,8 +2,11 @@ package ru.bobby.web;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.repository.mock.MockUserProceduresRepositoryImpl;
 import ru.bobby.web.repository.mock.MockUserRepositoryImpl;
+import ru.bobby.web.service.UserService;
+import ru.bobby.web.service.UserServiceImpl;
 
 import java.util.Arrays;
 
@@ -15,7 +18,8 @@ public class SpringMain {
     public static void main(String[] args) {
         try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
             System.out.println("\n" + Arrays.toString(appCtx.getBeanDefinitionNames()) + "\n");
-           MockUserRepositoryImpl mockUserRepository = appCtx.getBean(MockUserRepositoryImpl.class);
+            UserServiceImpl userServiceImpl = appCtx.getBean(UserServiceImpl.class);
+            System.out.println(userServiceImpl.getRepository());
         }
     }
 }
