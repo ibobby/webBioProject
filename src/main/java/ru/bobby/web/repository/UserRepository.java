@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface UserRepository {
 
-    User save(int id);
+    User save(User user);
 
     boolean delete(int id);
 

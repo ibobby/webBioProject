@@ -10,6 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
         <!-- Logging -->
         <logback.version>1.1.2</logback.version>
         <slf4j.version>1.7.7</slf4j.version>
@@ -51,6 +52,20 @@
           <version>${logback.version}</version>
           <scope>runtime</scope>
       </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>${spring.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>commons-logging</groupId>
+                  <artifactId>commons-logging</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+
+
   </dependencies>
   <build>
     <finalName>webBioProject</finalName>
