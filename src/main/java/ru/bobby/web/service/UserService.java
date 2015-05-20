@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    public User save(int id) throws NotFoundException;
+    public User save(User user) throws NotFoundException;
 
     public void delete(int id) throws NotFoundException;
 

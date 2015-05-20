@@ -13,6 +13,8 @@ public interface UserProceduresService {
 
     public UserProcedures save(UserProcedures userProcedure, int userId);
 
+    public UserProcedures update(UserProcedures userProcedure, int userId);
+
     public void delete(int id, int userId);
 
     public void deleteAll(int userId);
