@@ -30,7 +30,8 @@ public class UserAdminMockTest {
 
     @Test
     public void create() {
-        controller.create(new User(5, "bob", "bob@gmail.com", "1", true, EnumSet.of(Role.ROLE_USER)));
+        User bob = new User(5, "bob", "bob@gmail.com", "1", true, EnumSet.of(Role.ROLE_USER));
+        controller.create(bob);
     }
 
     @Test(expected = NotFoundException.class)
