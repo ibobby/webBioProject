@@ -2,10 +2,6 @@ package ru.bobby.web;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.bobby.web.model.UserProcedures;
-import ru.bobby.web.repository.mock.MockUserProceduresRepositoryImpl;
-import ru.bobby.web.repository.mock.MockUserRepositoryImpl;
-import ru.bobby.web.service.UserService;
 import ru.bobby.web.service.UserServiceImpl;
 
 import java.util.Arrays;

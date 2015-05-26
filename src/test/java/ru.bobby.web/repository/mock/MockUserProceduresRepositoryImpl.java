@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.repository.UserProceduresRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +19,16 @@ import java.util.List;
 public class MockUserProceduresRepositoryImpl implements UserProceduresRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(MockUserProceduresRepositoryImpl.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        LOG.info("PostConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        LOG.info("PreDestroy");
+    }
 
     @Override
     public UserProcedures save(UserProcedures userProcedure, int userId) {

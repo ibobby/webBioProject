@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.bobby.web.LoggedUser;
 import ru.bobby.web.model.User;
 import ru.bobby.web.service.UserService;
 
@@ -21,20 +20,22 @@ public class AdminUserRestController {
     @Autowired
     private UserService service;
 
+    public void create(User user) {
+        LOG.info("create {}", user);
+        service.save(user);
+    }
+
     public void update(User user) {
-        int id = LoggedUser.id();
         LOG.info("update {}", user);
         service.update(user);
     }
 
-    public void delete() {
-        int id = LoggedUser.id();
+    public void delete(int id) {
         LOG.info("delete {}", id);
         service.delete(id);
     }
 
-    public void get() {
-        int id = LoggedUser.id();
+    public void get(int id) {
         LOG.info("get {}", id);
         service.get(id);
     }

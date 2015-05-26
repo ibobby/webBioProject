@@ -19,6 +19,18 @@ public class User extends NamedEntity {
 
     private Set<Role> authorities;
 
+    public User() {
+
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> authorities) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.authorities = authorities;
+    }
+
     public String getEmail() {
         return email;
     }

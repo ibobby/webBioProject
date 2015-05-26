@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.bobby.web.model.User;
 import ru.bobby.web.repository.UserRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +19,16 @@ public class MockUserRepositoryImpl implements UserRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(MockUserRepositoryImpl.class);
 
+    @PostConstruct
+    public void postConstruct() {
+        LOG.info("PostConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        LOG.info("PreDestroy");
+    }
+
     @Override
     public User save(User user) {
         LOG.info("save " + user);
@@ -26,7 +38,7 @@ public class MockUserRepositoryImpl implements UserRepository {
     @Override
     public boolean delete(int id) {
         LOG.info("delete " + id);
-        return true;
+        return id != 0;
     }
 
     @Override

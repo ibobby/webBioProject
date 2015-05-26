@@ -10,6 +10,10 @@ public class BaseEntity {
     public BaseEntity() {
     }
 
+    protected BaseEntity(int id) {
+        this.id = id;
+    }
+
     protected BaseEntity(Integer id) {
         this.id = id;
     }
