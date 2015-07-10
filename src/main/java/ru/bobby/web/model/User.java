@@ -9,15 +9,15 @@ import java.util.Set;
  */
 public class User extends NamedEntity {
 
-    private String email;
+    protected String email;
 
-    private String password;
+    protected String password;
 
-    private boolean enabled;
+    protected boolean enabled;
 
-    private Date registered = new Date();
+    protected Date registered = new Date();
 
-    private Set<Role> authorities;
+    protected Set<Role> authorities;
 
     public User() {
 
