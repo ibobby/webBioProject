@@ -29,7 +29,7 @@ public class UserAdminMockTest {
     }
 
     @Test
-    public void create() {
+    public void testCreate() {
         User bob = new User(5, "bob", "bob@gmail.com", "1", true, EnumSet.of(Role.ROLE_USER));
         controller.create(bob);
     }

@@ -31,6 +31,10 @@ public class User extends NamedEntity {
         this.authorities = authorities;
     }
 
+    public User(User u) {
+        this(u.getId(), u. getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getAuthorities());
+    }
+
     public String getEmail() {
         return email;
     }
