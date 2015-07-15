@@ -1,10 +1,12 @@
 package ru.bobby.web;
 
+import ru.bobby.web.matcher.ModelMatcher;
 import ru.bobby.web.model.Role;
 import ru.bobby.web.model.User;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * Created by b.istomin on 09.07.2015.
@@ -45,5 +47,14 @@ public class UserTestData {
 
         }
     }
+
+    public static final ModelMatcher<User, TestUser> MATCHER = new ModelMatcher<>(
+            new Function<User, TestUser>() {
+                @Override
+                public TestUser apply(User u) {
+                    return (u instanceof TestUser) ? (TestUser) u : new TestUser(u);
+                }
+            }
+    );
 
 }
