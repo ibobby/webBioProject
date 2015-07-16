@@ -1,9 +1,13 @@
 package ru.bobby.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.bobby.web.matcher.ModelMatcher;
+import ru.bobby.web.model.BaseEntity;
 import ru.bobby.web.model.Role;
 import ru.bobby.web.model.User;
 
+import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -12,6 +16,11 @@ import java.util.function.Function;
  * Created by b.istomin on 09.07.2015.
  */
 public class UserTestData {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserTestData.class);
+
+    public static final TestUser USER = new TestUser(BaseEntity.START_SEQ, "User", "user@yandex.ru", "password", true, EnumSet.of(Role.ROLE_USER));
+    public static final User Admin = new TestUser(BaseEntity.START_SEQ + 1, "Admin", "admin@gmail.com", "admin", true, EnumSet.of(Role.ROLE_ADMIN));
 
     public static class TestUser extends User {
 
