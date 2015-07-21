@@ -1,7 +1,9 @@
+import ru.bobby.web.matcher.ModelMatcher;
 import ru.bobby.web.model.BaseEntity;
 import ru.bobby.web.model.UserProcedures;
 
 import java.time.LocalDateTime;
+import java.util.function.Function;
 
 /**
  * Created by b.istomin on 20.07.2015.
@@ -21,8 +23,19 @@ public class ProcedureTestData {
     }
 
     public UserProcedures getUpdated() {
-        UserProcedures updated =
+        UserProcedures updated = new UserProcedures(PROC1);
+        updated.setDescription("Updated procedure");
+        return updated;
     }
 
+
+    public final ModelMatcher<UserProcedures, String> MATCHER = new ModelMatcher<>(
+            new Function<UserProcedures, String>() {
+                @Override
+                public String apply(UserProcedures procedure) {
+                    return procedure.toString();
+                }
+            }
+    );
 
 }

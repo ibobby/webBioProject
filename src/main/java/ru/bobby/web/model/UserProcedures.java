@@ -23,6 +23,10 @@ public class UserProcedures extends BaseEntity {
         this.scores = scores;
     }
 
+    public UserProcedures(UserProcedures proc) {
+        this(proc.getId(), proc.getDateTime(), proc.getDescription(), proc.getScores());
+    }
+
     public User getUser() {
         return user;
     }
