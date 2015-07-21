@@ -15,7 +15,7 @@ public class UserProcedures extends BaseEntity {
     protected int scores;
 
 
-    public UserProcedures(int id, LocalDateTime dateTime, String description, int scores) {
+    public UserProcedures(Integer id, LocalDateTime dateTime, String description, int scores) {
         super(id);
         //this.user = user;
         this.dateTime = dateTime;
