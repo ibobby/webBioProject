@@ -1,6 +1,6 @@
 package ru.bobby.web.model;
 
-import ru.bobby.web.util.exception.TimeUtil;
+import ru.bobby.web.util.TimeUtil;
 
 import java.time.LocalDateTime;
 

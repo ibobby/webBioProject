@@ -1,3 +1,5 @@
+package ru.bobby.web;
+
 import ru.bobby.web.matcher.ModelMatcher;
 import ru.bobby.web.model.BaseEntity;
 import ru.bobby.web.model.UserProcedures;
