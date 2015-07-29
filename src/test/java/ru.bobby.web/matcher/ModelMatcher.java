@@ -23,7 +23,7 @@ public class ModelMatcher<T,R> {
         Assert.assertEquals(entityConverter.apply(expected), entityConverter.apply(actual));
     }
 
-    public void assertEquals(List<T> expected, List<T> actual) {
+    public void assertListEquals(List<T> expected, List<T> actual) {
         Assert.assertEquals(map(expected, entityConverter), map(actual, entityConverter));
     }
 

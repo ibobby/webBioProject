@@ -20,7 +20,7 @@ public class UserTestData {
     private static final Logger LOG = LoggerFactory.getLogger(UserTestData.class);
 
     public static final TestUser USER = new TestUser(BaseEntity.START_SEQ, "User", "user@yandex.ru", "password", true, EnumSet.of(Role.ROLE_USER));
-    public static final User Admin = new TestUser(BaseEntity.START_SEQ + 1, "Admin", "admin@gmail.com", "admin", true, EnumSet.of(Role.ROLE_ADMIN));
+    public static final User ADMIN = new TestUser(BaseEntity.START_SEQ + 1, "Admin", "admin@gmail.com", "admin", true, EnumSet.of(Role.ROLE_ADMIN));
 
     public static class TestUser extends User {
 
