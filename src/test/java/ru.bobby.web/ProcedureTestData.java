@@ -24,14 +24,14 @@ public class ProcedureTestData {
         return new UserProcedures(null, LocalDateTime.of(2015, 1, 8, 18, 0), "created", 300);
     }
 
-    public UserProcedures getUpdated() {
+    public static UserProcedures getUpdated() {
         UserProcedures updated = new UserProcedures(PROC1);
         updated.setDescription("Updated procedure");
         return updated;
     }
 
 
-    public final ModelMatcher<UserProcedures, String> MATCHER = new ModelMatcher<>(
+    public static final ModelMatcher<UserProcedures, String> MATCHER = new ModelMatcher<>(
             new Function<UserProcedures, String>() {
                 @Override
                 public String apply(UserProcedures procedure) {

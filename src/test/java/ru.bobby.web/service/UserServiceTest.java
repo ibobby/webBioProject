@@ -17,6 +17,7 @@ import ru.bobby.web.util.exception.NotFoundException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
+import java.util.List;
 
 import static ru.bobby.web.UserTestData.*;
 
@@ -62,8 +63,28 @@ public class UserServiceTest {
         service.delete(1);
     }
 
+    @Test
+    public void testGet() throws Exception {
+        User user = service.get(BaseEntity.START_SEQ);
+        MATCHER.assertEquals(USER, user);
+    }
 
+    @Test
+    public void testGetByEmail() throws Exception {
+        User user = service.getByEmail("user@yandex.ru");
+    }
 
+    @Test
+    public void testGetAll() {
+        List<User> all = service.getAll();
+        MATCHER.assertListEquals(Arrays.asList(ADMIN, USER), all);
+    }
 
-
+    @Test
+    public void testUpdate() {
+        TestUser updated = new TestUser(USER);
+        updated.setName("UpdatedName");
+        service.update(updated.asUser());
+        MATCHER.assertEquals(updated, service.get(BaseEntity.START_SEQ));
+    }
 }
