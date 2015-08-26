@@ -2,7 +2,6 @@ package ru.bobby.web.repository.mock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.repository.UserProceduresRepository;
 
@@ -15,7 +14,7 @@ import java.util.List;
 /**
  * Created by bobby on 17.05.2015.
  */
-@Repository
+//@Repository
 public class MockUserProceduresRepositoryImpl implements UserProceduresRepository {
 
     private static final Logger LOG = LoggerFactory.getLogger(MockUserProceduresRepositoryImpl.class);

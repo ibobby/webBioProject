@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.repository.UserProceduresRepository;
@@ -21,6 +22,7 @@ import java.util.List;
 /**
  * Created by b.istomin on 22.06.2015.
  */
+@Repository
 public class JdbcUserProceduresRepositoryImpl implements UserProceduresRepository {
 
     private static final RowMapper<UserProcedures> ROW_MAPPER = new RowMapper<UserProcedures>() {
@@ -38,6 +40,7 @@ public class JdbcUserProceduresRepositoryImpl implements UserProceduresRepositor
 
     SimpleJdbcInsert simpleJdbcInsert;
 
+    @Autowired
     public JdbcUserProceduresRepositoryImpl(DataSource dataSource) {
         this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
                 .withTableName("PROCEDURES")
@@ -51,7 +54,7 @@ public class JdbcUserProceduresRepositoryImpl implements UserProceduresRepositor
         MapSqlParameterSource map = new MapSqlParameterSource()
                 .addValue("id", userProcedure.getId())
                 .addValue("user_id", userId)
-                .addValue("dateTime", userProcedure.getDateTime())
+                .addValue("dateTime", Timestamp.valueOf(userProcedure.getDateTime()))
                 .addValue("description", userProcedure.getDescription())
                 .addValue("scores", userProcedure.getScores());
 
@@ -96,7 +99,7 @@ public class JdbcUserProceduresRepositoryImpl implements UserProceduresRepositor
     @Override
     public List<UserProcedures> getBetween(int userId, LocalDateTime startDate, LocalDateTime endDate) {
         return jdbcTemplate.query(
-                "SELECT * FROM procedures WHERE datetime >= ? AND datetime < ? AND user_id = ? ORDER BY datetime DESC",
-                ROW_MAPPER, Timestamp.valueOf(startDate), Timestamp.valueOf(endDate));
+                "SELECT * FROM procedures WHERE user_id = ? AND datetime >= ? AND datetime < ? ORDER BY datetime DESC",
+                ROW_MAPPER, userId, Timestamp.valueOf(startDate), Timestamp.valueOf(endDate));
     }
 }

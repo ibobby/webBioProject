@@ -15,12 +15,12 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserRepository repository;
+
     public UserRepository getRepository() {
         return repository;
     }
-
-    @Autowired
-    private UserRepository repository;
 
     @Override
     public User save(User user) throws NotFoundException {

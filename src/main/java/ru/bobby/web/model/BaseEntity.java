@@ -10,7 +10,7 @@ public class BaseEntity {
 
     protected final static Logger LOG = LoggerFactory.getLogger(BaseEntity.class);
 
-    public static final int START_SEQ = 1000000;
+    public static final int START_SEQ = 100000;
 
     protected Integer id;
 

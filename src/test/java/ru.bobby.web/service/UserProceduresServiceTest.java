@@ -3,8 +3,10 @@ package ru.bobby.web.service;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.util.DbPopulator;
 import ru.bobby.web.util.exception.NotFoundException;
@@ -22,6 +24,7 @@ import static ru.bobby.web.model.UserProcedures.START_SEQ;
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-db.xml"
         })
+@RunWith(SpringJUnit4ClassRunner.class)
 public class UserProceduresServiceTest {
 
     @Autowired
@@ -38,7 +41,7 @@ public class UserProceduresServiceTest {
     @Test
     public void testDelete() throws Exception {
         service.delete(PROCEDURE1_ID, START_SEQ);
-        MATCHER.assertListEquals(Arrays.asList(PROC2, PROC3, PROC4), service.getAll(START_SEQ));
+        MATCHER.assertListEquals(Arrays.asList(PROC4, PROC3, PROC2), service.getAll(START_SEQ));
     }
 
     @Test(expected = NotFoundException.class)
@@ -50,7 +53,7 @@ public class UserProceduresServiceTest {
     public void testSave() throws Exception {
         UserProcedures created = getCreated();
         service.save(created, START_SEQ);
-        MATCHER.assertListEquals(Arrays.asList(created, PROC1, PROC2, PROC3, PROC4), service.getAll(START_SEQ));
+        MATCHER.assertListEquals(Arrays.asList(created, PROC4, PROC3, PROC2, PROC1), service.getAll(START_SEQ));
     }
 
     @Test
@@ -79,12 +82,12 @@ public class UserProceduresServiceTest {
 
     @Test
     public void testGetAll() throws Exception {
-        MATCHER.assertListEquals(Arrays.asList(PROC1, PROC2, PROC3, PROC4), service.getAll(START_SEQ));
+        MATCHER.assertListEquals(Arrays.asList(PROC4, PROC3, PROC2, PROC1), service.getAll(START_SEQ));
     }
 
     @Test
     public void testGetBetween() throws Exception {
-        MATCHER.assertListEquals(Arrays.asList(PROC1, PROC2),
+        MATCHER.assertListEquals(Arrays.asList(PROC2, PROC1),
                 service.getBetween(START_SEQ, LocalDateTime.of(2015, 1, 6, 8, 0), LocalDateTime.of(2015, 1, 6, 14, 0)));
     }
 
