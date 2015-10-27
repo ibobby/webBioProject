@@ -10,7 +10,6 @@ import ru.bobby.web.model.User;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
 
 /**
  * Created by b.istomin on 09.07.2015.
@@ -49,21 +48,15 @@ public class UserTestData {
             TestUser that = (TestUser) o;
 
             return Objects.equals(this.password, that.password)
-                    &&Objects.equals(this.id, that.id)
-                    &&Objects.equals(this.name, that.name)
-                    &&Objects.equals(this.email, that.email)
-                    &&Objects.equals(this.enabled, that.enabled);
+                    && Objects.equals(this.id, that.id)
+                    && Objects.equals(this.name, that.name)
+                    && Objects.equals(this.email, that.email)
+                    && Objects.equals(this.enabled, that.enabled);
 
         }
     }
 
     public static final ModelMatcher<User, TestUser> MATCHER = new ModelMatcher<>(
-            new Function<User, TestUser>() {
-                @Override
-                public TestUser apply(User u) {
-                    return (u instanceof TestUser) ? (TestUser) u : new TestUser(u);
-                }
-            }
-    );
+            u -> ((u instanceof TestUser) ? (TestUser) u : new TestUser(u)));
 
 }

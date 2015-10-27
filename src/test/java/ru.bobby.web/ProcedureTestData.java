@@ -5,7 +5,6 @@ import ru.bobby.web.model.BaseEntity;
 import ru.bobby.web.model.UserProcedures;
 
 import java.time.LocalDateTime;
-import java.util.function.Function;
 
 /**
  * Created by b.istomin on 20.07.2015.
@@ -32,12 +31,6 @@ public class ProcedureTestData {
 
 
     public static final ModelMatcher<UserProcedures, String> MATCHER = new ModelMatcher<>(
-            new Function<UserProcedures, String>() {
-                @Override
-                public String apply(UserProcedures procedure) {
-                    return procedure.toString();
-                }
-            }
-    );
+            (procedure) -> (procedure.toString()));
 
 }

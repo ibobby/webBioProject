@@ -13,8 +13,6 @@ import ru.bobby.web.model.UserProcedures;
 import ru.bobby.web.repository.UserProceduresRepository;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,12 +23,9 @@ import java.util.List;
 @Repository
 public class JdbcUserProceduresRepositoryImpl implements UserProceduresRepository {
 
-    private static final RowMapper<UserProcedures> ROW_MAPPER = new RowMapper<UserProcedures>() {
-        @Override
-        public UserProcedures mapRow(ResultSet rs, int i) throws SQLException {
-            return new UserProcedures(rs.getInt("id"), rs.getTimestamp("datetime").toLocalDateTime(), rs.getString("description"), rs.getInt("scores"));
-        }
-    };
+    private static final RowMapper<UserProcedures> ROW_MAPPER =
+       (rs, rowNum) -> (new UserProcedures(rs.getInt("id"), rs.getTimestamp("datetime").toLocalDateTime(), rs.getString("description"), rs.getInt("scores")));
+
 
     @Autowired
     JdbcTemplate jdbcTemplate;
