@@ -6,6 +6,8 @@
 
     <context:property-placeholder  location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
 
+    <context:component-scan base-package="ru.bobby.**.repository.jdbc"/>
+
     <bean class="ru.bobby.web.util.DbPopulator">
         <constructor-arg name="scriptLocation" value="classpath:db/populateDB.sql"/>
     </bean>
