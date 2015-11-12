@@ -8,7 +8,7 @@
 
     <context:component-scan base-package="ru.bobby.**.repository.jdbc"/>
 
-    <bean class="ru.bobby.web.util.DbPopulator">
+    <bean class="ru.bobby.bio.util.DbPopulator">
         <constructor-arg name="scriptLocation" value="classpath:db/populateDB.sql"/>
     </bean>
 

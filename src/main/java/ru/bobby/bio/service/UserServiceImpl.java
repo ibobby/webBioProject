@@ -1,0 +1,54 @@
+package ru.bobby.bio.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ru.bobby.bio.model.User;
+import ru.bobby.bio.repository.UserRepository;
+import ru.bobby.bio.util.exception.ExceptionUtil;
+import ru.bobby.bio.util.exception.NotFoundException;
+
+import java.util.List;
+
+/**
+ * Created by b.istomin on 14.05.2015.
+ */
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository repository;
+
+    public UserRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    public User save(User user) throws NotFoundException {
+        return repository.save(user);
+    }
+
+    @Override
+    public void delete(int id) throws NotFoundException {
+        ExceptionUtil.check(repository.delete(id), id);
+    }
+
+    @Override
+    public User get(int id) throws NotFoundException {
+        return ExceptionUtil.check(repository.get(id), id);
+    }
+
+    @Override
+    public User getByEmail(String email) throws NotFoundException {
+        return ExceptionUtil.check(repository.getByEmail(email), email);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return repository.getAll();
+    }
+
+    @Override
+    public void update(User user) throws NotFoundException {
+        ExceptionUtil.check(repository.save(user), user.getId());
+    }
+}

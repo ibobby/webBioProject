@@ -6,9 +6,9 @@
 
 
     <!--
-    <bean class="ru.bobby.web.repository.mock.MockUserRepositoryImpl" id="mockUserRepository"/>
+    <bean class="MockUserRepositoryImpl" id="mockUserRepository"/>
 
-    <bean class="ru.bobby.web.service.UserServiceImpl">
+    <bean class="ru.bobby.bio.service.UserServiceImpl">
         <property name="repository" ref="mockUserRepository"/>
     </bean>
     !-->
@@ -18,6 +18,5 @@
     <context:component-scan base-package="ru.bobby.**.service"/>
 
     <context:component-scan base-package="ru.bobby.**.web"/>
-
 
 </beans>
