@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class SpringMain {
 
     public static void main(String[] args) {
-        try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
+        try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/mock.xml")) {
             System.out.println("\n" + Arrays.toString(appCtx.getBeanDefinitionNames()) + "\n");
             UserServiceImpl userServiceImpl = appCtx.getBean(UserServiceImpl.class);
             System.out.println(userServiceImpl.getRepository());
