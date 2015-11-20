@@ -22,7 +22,7 @@ import static ru.bobby.bio.model.UserProcedures.START_SEQ;
  */
 @ContextConfiguration({
         "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
+        "classpath:spring/spring-db-jdbc.xml"
         })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserProceduresServiceTest {

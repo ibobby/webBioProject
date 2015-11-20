@@ -49,7 +49,7 @@ public class UserServiceTest {
 
     @Test(expected = DataAccessException.class)
     public void testDuplicateMailSave() throws Exception {
-        service.save(new TestUser("Duplicate", "user@yandex.ru", "newpass", true, EnumSet.of(Role.ROLE_USER)));
+        service.save(new TestUser("Duplicate", "user@yandex.ru", "newpass", true, EnumSet.of(Role.ROLE_USER)).asUser());
     }
 
     @Test

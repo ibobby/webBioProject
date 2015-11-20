@@ -2,6 +2,8 @@ package ru.bobby.bio.model;
 
 import ru.bobby.bio.util.TimeUtil;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 /**
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
  */
 public class UserProcedures extends BaseEntity {
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
     protected LocalDateTime dateTime;
     protected String description;
