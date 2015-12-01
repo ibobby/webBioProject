@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by bobby on 13.05.2015.
  */
 @Entity
-@Table(name = "USERS", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "unique_email")})
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "unique_email")})
 @NamedQueries({
         @NamedQuery(name = "User.DELETE", query = "DELETE FROM User u WHERE u.id=:id"),
         @NamedQuery(name = "User.BY_EMAIL", query = "SELECT u FROM User u LEFT JOIN FETCH u.authorities WHERE u.email=?1"),

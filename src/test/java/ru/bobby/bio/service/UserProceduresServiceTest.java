@@ -2,7 +2,9 @@ package ru.bobby.bio.service;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,10 +24,13 @@ import static ru.bobby.bio.model.UserProcedures.START_SEQ;
  */
 @ContextConfiguration({
         "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db-jdbc.xml"
+        "classpath:spring/spring-db.xml"
         })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserProceduresServiceTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Autowired
     UserProceduresService service;
