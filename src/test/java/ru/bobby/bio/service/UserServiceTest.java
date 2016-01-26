@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.bobby.bio.UserTestData.*;
@@ -25,6 +26,7 @@ import static ru.bobby.bio.UserTestData.*;
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-db.xml"
 })
+@ActiveProfiles("postgres")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserServiceTest {
 

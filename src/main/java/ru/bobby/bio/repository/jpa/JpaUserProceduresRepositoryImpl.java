@@ -2,6 +2,7 @@ package ru.bobby.bio.repository.jpa;
 
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.bobby.bio.model.User;
 import ru.bobby.bio.model.UserProcedures;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by b.istomin on 18.11.2015.
  */
 @Repository
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class JpaUserProceduresRepositoryImpl implements UserProceduresRepository {
 
     @PersistenceContext

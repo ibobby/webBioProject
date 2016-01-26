@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.bobby.bio.model.UserProcedures;
@@ -26,6 +27,7 @@ import static ru.bobby.bio.model.UserProcedures.START_SEQ;
         "classpath:spring/spring-app.xml",
         "classpath:spring/spring-db.xml"
         })
+@ActiveProfiles("postgres")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserProceduresServiceTest {
 
