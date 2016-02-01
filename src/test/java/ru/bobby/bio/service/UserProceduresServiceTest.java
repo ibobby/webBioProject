@@ -28,7 +28,7 @@ import static ru.bobby.bio.model.UserProcedures.START_SEQ;
         "classpath:spring/spring-db.xml"
         })
 //@ActiveProfiles("hsqldb")
-@ActiveProfiles("postgres")
+@ActiveProfiles({"jdbc", "postgres"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserProceduresServiceTest {
 
