@@ -1,18 +1,11 @@
 package ru.bobby.bio.service;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.bobby.bio.UserTestData.*;
 import ru.bobby.bio.model.BaseEntity;
 import ru.bobby.bio.model.Role;
 import ru.bobby.bio.model.User;
-import ru.bobby.bio.util.DbPopulator;
 import ru.bobby.bio.util.exception.NotFoundException;
 
 import java.util.Arrays;
@@ -22,25 +15,8 @@ import java.util.List;
 
 import static ru.bobby.bio.UserTestData.*;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
-//@ActiveProfiles({"datajpa", "hsqldb"})
-@ActiveProfiles({"jdbc", "postgres"})
-@RunWith(SpringJUnit4ClassRunner.class)
-public class UserServiceTest {
 
-    @Autowired
-    protected UserService service;
-
-    @Autowired
-    private DbPopulator dbPopulator;
-
-    @Before
-    public void setUp() {
-        dbPopulator.execute();
-    }
+abstract public class UserServiceTest extends dbTest {
 
     @Test
     public void testSave() throws Exception {

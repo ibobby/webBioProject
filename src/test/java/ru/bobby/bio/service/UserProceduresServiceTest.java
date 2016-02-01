@@ -1,15 +1,8 @@
 package ru.bobby.bio.service;
 
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.bobby.bio.model.UserProcedures;
 import ru.bobby.bio.util.DbPopulator;
 import ru.bobby.bio.util.exception.NotFoundException;
@@ -23,28 +16,14 @@ import static ru.bobby.bio.model.UserProcedures.START_SEQ;
 /**
  * Created by b.istomin on 31.07.2015.
  */
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-        })
-//@ActiveProfiles("hsqldb")
-@ActiveProfiles({"jdbc", "postgres"})
-@RunWith(SpringJUnit4ClassRunner.class)
-public class UserProceduresServiceTest {
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+abstract public class UserProceduresServiceTest extends dbTest {
 
     @Autowired
     UserProceduresService service;
 
     @Autowired
     private DbPopulator dbPopulator;
-
-    @Before
-    public void setUp() {
-        dbPopulator.execute();
-    }
 
     @Test
     public void testDelete() throws Exception {
