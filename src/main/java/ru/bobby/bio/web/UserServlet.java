@@ -3,7 +3,11 @@ package ru.bobby.bio.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import ru.bobby.bio.service.UserService;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,14 +21,20 @@ import java.io.IOException;
 public class UserServlet extends HttpServlet {
 
     static final Logger LOG = LoggerFactory.getLogger(UserServlet.class);
+    private WebApplicationContext wac;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        wac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+    }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("userList.jsp");
+        LOG.debug("redirect to userList");
 
-        LOG.trace("trace redirect");
-        LOG.debug("debug redirect");
-        LOG.info("info redirect");
-        LOG.warn("warn redirect");
-        LOG.error("error redirect");
+        UserService userService = wac.getBean(UserService.class);
+        req.setAttribute("userList", userService.getAll());
+        req.getRequestDispatcher("/userList.jsp").forward(req, resp);
+
     }
 }
