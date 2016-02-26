@@ -34,7 +34,7 @@ public class UserServlet extends HttpServlet {
 
         UserService userService = wac.getBean(UserService.class);
         req.setAttribute("userList", userService.getAll());
-        req.getRequestDispatcher("/userList.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/jsp/userList.jsp").forward(req, resp);
 
     }
 }
