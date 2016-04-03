@@ -52,7 +52,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
         } else {
             namedParameterJdbcTemplate.update(
                     "update users set name=:name, email=:email," +
-                        "password=:password, registered=:registered, enabled=:enabled WHERE id=:id", map);
+                        "password=:password, enabled=:enabled WHERE id=:id", map);
         }
         return user;
     }

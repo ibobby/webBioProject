@@ -1,5 +1,6 @@
 package ru.bobby.bio;
 
+import ru.bobby.bio.model.BaseEntity;
 import ru.bobby.bio.model.Role;
 
 import java.util.Collections;
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 public class LoggedUser {
 
-    protected int id = 0;
+    protected int id = BaseEntity.START_SEQ;
     protected Set<Role> roles = Collections.singleton(Role.ROLE_USER);
     protected boolean enabled = true;
 

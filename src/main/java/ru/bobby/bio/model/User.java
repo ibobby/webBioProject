@@ -39,6 +39,7 @@ public class User extends NamedEntity {
     protected boolean enabled;
 
     @Column(name = "registered", columnDefinition = "timestamp default now()")
+    @NotEmpty
     protected Date registered = new Date();
 
     @Enumerated(EnumType.STRING)
